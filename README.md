@@ -7,18 +7,14 @@ _Abnormalities classification and detection for spinal lesions in radiographs co
 
 </div>
 
-The aim of this project is to develop a high-quality video annotation tool for computer vision and machine learning
-applications with the following desiderata:
+In this project, we employ the tasks of detecting spinal lesions by using a combined classification and detection framework. Specifically, the contributions can be listed as:
 
-1. Simple and efficient to use for a non-expert.
-2. Supports multiple annotation types including temporal segments, object bounding boxes, semantic and instance regions,
-   tracklets, and human pose (skeleton).
-3. Runs in a browser without external libraries or need for server-side processing. But easy to plug-in a back-end for
-   heavy "in-the-loop" processing (e.g., segments from bounding boxes or frame completion from partial labels).
-4. Integrates easily with crowd-sourced annotation services (e.g., Amazon Mechanical Turk).
-5. Compatible with all (most) modern browsers and operating systems including tablets.
-6. Secure. Data does not need to leave the local machine (since there is no server-side processing).
-7. Open-source.
+1. Problem formulation.
+2. Preprocessing.
+3. Analyze the dataset.
+4. Improve classification performance by applying contrastive learning feature branch.
+5. Evaluate the effectiveness of employing classification knowledge on detection results.
+
 
 ## Screenshots
 
@@ -37,6 +33,9 @@ applications with the following desiderata:
 > Please make sure you are following [Physionet agreement terms](https://physionet.org/content/vindr-spinexr/1.0.0/).
 >
 > All the main files are under SpineXR-detection/mmdetection/spinexr_det/. Go to the path before executing all following commands.
+>
+> The weights of our classification and detection tasks can be found at this [drive]](https://drive.google.com/drive/folders/14dB6Gn3c8u7QKrgwfh71qLwaTw0kptyv?usp=sharing).
+
 
 ```
 wget -r -N -c -np --user giaabaoo --ask-password https://physionet.org/files/vindr-spinexr/1.0.0/
@@ -71,12 +70,12 @@ sh yolo_to_coco.sh
 ## Overall framework
 
 1. **Train classification task**
-    1. Preprocess images for classification tasks.
+    1. Preprocess images for classification task.
     2. Train contrastive learning loss to learn a model to generate good latent space.
     3. Continue training the second stage to predict the abnormalities of images.
 2. **Train detection task**
-    1. Create a new MTurk task with survey template, replace the survey link with task link.
-    2. Create a batch with generated URLs.
+    1. Preprocess annotations for detection task.
+    2. Configure the settings to train the network with mmdetection.
 3. **Inference using both classification and detection branch**
     1. If the image is classified as normal, reject all the detected boxes. Otherwise, all bounding boxes from the detector is retained.
 
