@@ -7,7 +7,7 @@ _Abnormalities classification and detection for spinal lesions in radiographs co
 
 </div>
 
-In this project, we employ the tasks of detecting spinal lesions by using a combined classification and detection framework. Specifically, the contributions can be listed as:
+In this project, we employ the tasks of detecting spinal lesions by using a combined classification and detection framework. Specifically, the main contributions are:
 
 1. Problem formulation.
 2. Preprocessing.
