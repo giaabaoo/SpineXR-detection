@@ -5,7 +5,7 @@
 
 _Abnormalities classification and detection for spinal lesions in radiographs_
 
-[![Star](https://github.com/vinbigdata-medical/vindr-spinexr)](https://github.com/vinbigdata-medical/vindr-spinexr)
+[![Star]()](https://github.com/vinbigdata-medical/vindr-spinexr)
 
 </div>
 
@@ -24,253 +24,97 @@ applications with the following desiderata:
 
 ## Screenshots
 
-### Object
+### Normal images
 
-![Object](doc/img/object.gif)
+![Normal](public/normal.png)
 
-### Region
-
-![Region](doc/img/region.gif)
-
-### Skeleton
-
-![Skeleton](doc/img/skeleton.gif)
-
-### Skeleton Type
-
-![Skeleton Type](doc/img/skeleton-type.gif)
-
-### Action
-
-![Action](doc/img/action.gif)
+### Abnormal images
+![Normal](public/abnormal.png)
 
 ## Usage
+## Important notes!!
 
-### Annotate local videos
+> **Note** that you will need to register an account to access the dataset.
+> Please make sure you are following [Physionet agreement terms](https://physionet.org/content/vindr-spinexr/1.0.0/).
+> All the main files are under SpineXR-detection/mmdetection/spinexr_det/. Go to the path before executing all following commands.
 
-Just open [Host](https://vidat2.davidz.cn) and open a local video, you are good to go!
+```
+wget -r -N -c -np --user giaabaoo --ask-password https://physionet.org/files/vindr-spinexr/1.0.0/
+```
 
-### Annotate remote videos
+To visualize the dataset, use the following command:
+```
+python visualize_bb.py
+```
 
-You need to [deploy](#deployment) Vidat first, and then use [URL parameters](#url-parameters) to load the video into
-Vidat. Please note that Vidat does **not** support online YouTube videos due
-to [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+Combine classification results to refine the boxes in the detection task.
 
-### Integrate with Amazon Mechanical Turk (MTurk)
+## Preprocess dataset
 
-1. **Prepare tasks**
-    1. [Deploy](#deployment) Vidat on a server which can access to the videos and annotation (config) files.
-    2. Generate URLs for each task,
-       e.g. `https://example.com?annotation=task1.json&submitURL=http%3A%2F%2Fexample2.com%3Ftoken%3D123456`.
-2. **Dispatch tasks on MTurk**
+For the classification task, images are preprocessed regarding the following script:
+
+```
+python preprocess_images_cls.py
+```
+
+For the detection task, we will need to convert our annotations format into coco format so that the models using mmdetection can be run and evaluated successfully. This consists of two steps:
+
+1. Convert VOC format to YOLO format:
+```
+python voc_to_yolo.py
+```
+2. Convert YOLO format to COCO format:
+```
+sh yolo_to_coco.sh
+```
+
+## Overall framework
+
+1. **Train classification task**
+    1. Preprocess images for classification tasks.
+    2. Train contrastive learning loss to learn a model to generate good latent space.
+    3. Continue training the second stage to predict the abnormalities of images.
+2. **Train detection task**
     1. Create a new MTurk task with survey template, replace the survey link with task link.
     2. Create a batch with generated URLs.
-3. **Collect submissions**
-    1. Build up an independent API backend (see `/tools/backend/` for a simple implementation) that handles submissions.
+3. **Inference using both classification and detection branch**
+    1. If the image is classified as normal, reject all the detected boxes. Otherwise, all bounding boxes from the detector is retained.
 
-Submission API:
+![Overall framework](public/overall_detection.png)
 
-**Request**
+### Train classification
 
-```text
-POST <submitURL>
-content-type: application/json
-<annotation>
-```
+![Classification network](public/cls.png)
 
-**Respond**
-
-```text
-content-type: application/json
-{
-    type: '' // color: "primary" (default) | "secondary" | "accent" | "dark" | "positive" | "negative" | "info" | "warning"
-    message: '' // notify the user (required)
-    clipboard: '' // copy to user's clipboard (optional)
-}
-```
-
-## Deployment
-
-> Note that this is only necessary if you want to do development or host your own version of the tool. If you just want to label videos then you can use one of the host servers linked to above (data will remain on your local machine; it will not be sent to the host server).
-
-1. Download our latest [release](https://github.com/anucvml/vidat/releases). Note that the `pre-release` is
-   automatically generated and should **not** be used in production.
-2. Unzip all files and put them behind a web server ([Nginx](http://nginx.org/), [Apache](http://httpd.apache.org/),
-   etc.). Note that open `index.html` in your explorer does **not** work.
-3. Open in your favourite browser.
-
-## URL Parameters
-
-> All the keys and values are **not** case-sensitive.
->
-> **Note** if you are using an external URL for `annotation`, `video`, `config` or `submitURL`,
-> please make sure you are following [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
-> And they need to be [URL encoded](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) if there is any special characters.
-
-### `annotation`
-
-**Default** `null`
-
-**Example** `/annotation/exmaple.json`, `http://exmaple/static/annotation/exmaple.json`
-
-Path to the annotation file. Vidat will load the video, annotation and configurations from this file. This parameter has
-higher priority than `video`, `config`, `defaultFPS` and `defaultFPK`. Please refer
-to [File Formats - Annotation](#file-formats) for format details.
-
-### `video`
-
-**Default** `null`
-
-**Example** `/video/exmaple.mp4`, `http://exmaple/static/video/exmaple.json`
-
-Path to the video file. Please refer to [`decoder`](#decoder) for more information.
-
-### `config`
-
-**Default** `null`
-
-**Example** `/config/exmaple.json`, `http://exmaple/static/config/exmaple.json`
-
-Path to the video file. Please refer to [File Formats - Config](#file-formats) for format details.
-
-### `mode`
-
-**Default** `null`
-
-**Example** `object` | `region` | `skeleton`
-
-Specify current mode for Vidat.
-
-### `zoom`
-
-**Default** `false`
-
-**Example** `true` | `false`
-
-Whether toggle zoom on.
-
-### `sensitivity`
-
-**Default** `hasTouch ? 10 : 5`
-
-**Example** `Integer >= 1`
-
-When detecting points / edges, the number of pixel(s) between you mouse and the annotation.
-
-### `defaultFPS`
-
-**Default** `10`
-
-**Example** `1 <= Integer <= 60`
-
-The default frame per second used when extracting frames from the given video.
-
-### `defaultFPK`
-
-**Default** `50`
-
-**Example** `Integer >= 1`
-
-The default frame per keyframe used when generating keyframes.
-
-### `decoder`
-
-**Default** `auto`
-
-**Example** `auto` | `v1` | `v2`
-
-The video decoder used for frame extracting.
-
-`v1` uses `<canvas>` as a video decoder,
-by [`pause` - `draw` - `play` - `wait for timeupdate` strategy](https://stackoverflow.com/revisions/32708998/5). It is
-the most reliable and compatible methods for most cases. But it is slow and computational inefficient.
-
-`v2` uses [`WebCodecs.VideoDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder), it takes the
-advantages of native video decoder built inside the browser. It is way faster than `v1` but lack of support from old
-browsers.
-
-`auto` Vidat will determine which one to use for you.
-
-See [VideoLoader Wiki](https://github.com/anucvml/vidat/wiki/VideoLoader) for details.
-
-### `showObjects`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to show `object` mode related components.
-
-### `showRegions`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to show `region` mode related components.
-
-### `showSkeletons`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to show `skeleton` mode related components.
-
-### `showActions`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to show `action` related components.
-
-### `muted`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to mute the video when playing.
-
-### `grayscale`
-
-**Default** `false`
-
-**Example** `true` | `false`
-
-Whether to grayscale the video.
-
-### `showPopup`
-
-**Default** `true`
-
-**Example** `true` | `false`
-
-Whether to show quick popup when finishing annotating an object/region/skeleton.
-
-### `submitURL`
-
-**Default** `null`
-
-**Example** `submitURL=http%3A%2F%2Fexample.com%3Ftoken%3D123456`
-
-URL used for submitting annotation.
-
-### Examples
+To train the classification task, run the following command:
 
 ```
-http://example.com?showObjects=false&showRegions=false&showSkeletons=false
+python combine_cls_2_det_infer.py
 ```
 
-This will show action only.
+### Train detection
+
+To conduct the training on Cascade RCNN with DCN and FPN architecture, use our script:
 
 ```
-http://example.com?mode=skeleton&showPopup=false
+sh train.sh
 ```
 
-This will set the current mode to skeleton and disable popup window.
+To evaluate, run:
 
+```
+sh test.sh
+```
+
+Besides the given configs for our experimented model, you can also follow the configs procedure from [MMDetection](https://github.com/open-mmlab/mmdetection/tree/master/configs) to experiment on other supported detectors.
+
+### Demo
+
+```
+python combine_cls_2_det_infer.py
+```
+
+Combine classification results to refine the boxes in the detection task.
 
 
 **Annotation**
