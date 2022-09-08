@@ -5,7 +5,7 @@
 
 _Abnormalities classification and detection for spinal lesions in radiographs_
 
-[![Star](star.jpg)](https://github.com/vinbigdata-medical/vindr-spinexr)
+[![Star](public/star.jpg)](https://github.com/vinbigdata-medical/vindr-spinexr)
 
 </div>
 
@@ -86,7 +86,7 @@ sh yolo_to_coco.sh
 
 ### Train classification
 
-![Classification network](public/cls.png)
+![Classification network](public/cls.jpg)
 
 To train the classification task, run the following command:
 
