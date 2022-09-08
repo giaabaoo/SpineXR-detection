@@ -1,0 +1,285 @@
+{
+    "images": [
+        {
+            "file_name": "875f04ff5da989625e552f51f6707e84.png",
+            "height": 3000,
+            "width": 1243,
+            "id": 0
+        },
+        {
+            "file_name": "982b15ee16f40419b12668fe7070ffa9.png",
+            "height": 1563,
+            "width": 1183,
+            "id": 1
+        },
+        {
+            "file_name": "a8803b6965aa4c6fb519d5ca282ee06c.png",
+            "height": 2874,
+            "width": 2212,
+            "id": 2
+        }
+    ],
+    "categories": [
+        {
+            "supercategory": "Defect",
+            "id": 1,
+            "name": "Osteophytes"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 2,
+            "name": "Other lesions"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 3,
+            "name": "Spondylolysthesis"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 4,
+            "name": "Disc space narrowing"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 5,
+            "name": "Vertebral collapse"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 6,
+            "name": "Foraminal stenosis"
+        },
+        {
+            "supercategory": "Defect",
+            "id": 7,
+            "name": "Surgical implant"
+        }
+    ],
+    "annotations": [
+        {
+            "id": 1,
+            "image_id": 0,
+            "bbox": [
+                793.0,
+                836.0,
+                32.0,
+                39.0
+            ],
+            "area": 1248,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 2,
+            "image_id": 0,
+            "bbox": [
+                810.0,
+                917.0,
+                46.0,
+                24.0
+            ],
+            "area": 1104,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 3,
+            "image_id": 1,
+            "bbox": [
+                472.0,
+                913.0,
+                38.0,
+                68.0
+            ],
+            "area": 2584,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 4,
+            "image_id": 1,
+            "bbox": [
+                463.0,
+                813.0,
+                27.0,
+                68.0
+            ],
+            "area": 1836,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 5,
+            "image_id": 1,
+            "bbox": [
+                459.0,
+                711.0,
+                49.0,
+                77.0
+            ],
+            "area": 3773,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 6,
+            "image_id": 2,
+            "bbox": [
+                912.0,
+                951.0,
+                77.0,
+                70.0
+            ],
+            "area": 5390,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 7,
+            "image_id": 2,
+            "bbox": [
+                1262.0,
+                1341.0,
+                106.0,
+                69.0
+            ],
+            "area": 7314,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 8,
+            "image_id": 2,
+            "bbox": [
+                1201.0,
+                581.0,
+                67.0,
+                77.0
+            ],
+            "area": 5159,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 9,
+            "image_id": 2,
+            "bbox": [
+                889.0,
+                1351.0,
+                100.0,
+                70.0
+            ],
+            "area": 7000,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 10,
+            "image_id": 2,
+            "bbox": [
+                1252.0,
+                1089.0,
+                73.0,
+                63.0
+            ],
+            "area": 4599,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 11,
+            "image_id": 2,
+            "bbox": [
+                1228.0,
+                924.0,
+                77.0,
+                67.0
+            ],
+            "area": 5159,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 12,
+            "image_id": 2,
+            "bbox": [
+                1242.0,
+                1183.0,
+                94.0,
+                70.0
+            ],
+            "area": 6580,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 13,
+            "image_id": 2,
+            "bbox": [
+                922.0,
+                1102.0,
+                77.0,
+                67.0
+            ],
+            "area": 5159,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 14,
+            "image_id": 2,
+            "bbox": [
+                1195.0,
+                672.0,
+                67.0,
+                67.0
+            ],
+            "area": 4489,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 15,
+            "image_id": 2,
+            "bbox": [
+                912.0,
+                1206.0,
+                70.0,
+                67.0
+            ],
+            "area": 4690,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        },
+        {
+            "id": 16,
+            "image_id": 2,
+            "bbox": [
+                1225.0,
+                833.0,
+                67.0,
+                67.0
+            ],
+            "area": 4489,
+            "iscrowd": 0,
+            "category_id": 1,
+            "segmentation": []
+        }
+    ]
+}
