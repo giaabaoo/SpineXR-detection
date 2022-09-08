@@ -473,7 +473,7 @@ Following COCO format:
 }
 ```
 
-See [`public/annotation/sample.json`](public/sample.json) for am example.
+See [`public/annotation/sample.json`](public/sample.json) for an example.
 
 ## Citation
 ```
