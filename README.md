@@ -5,7 +5,7 @@
 
 _Abnormalities classification and detection for spinal lesions in radiographs_
 
-[![Star](public/star.jpg)](https://github.com/vinbigdata-medical/vindr-spinexr)
+[![Star](public/star.png)](https://github.com/vinbigdata-medical/vindr-spinexr)
 
 </div>
 
