@@ -1,11 +1,11 @@
 <div align="center">
-<img width="96px" height="96px" src="public/sample.png" alt="SpineXR">
+<img width="120px" height="120px" src="public/sample.png" alt="SpineXR">
 
 # SpineXR Detection
 
 _Abnormalities classification and detection for spinal lesions in radiographs_
 
-[![Star](https://github.com/vinbigdata-medical/vindr-spinexr)](https://github.com/vinbigdata-medical/vindr-spinexr)
+[![Star](public/logo.png)](https://github.com/vinbigdata-medical/vindr-spinexr)
 
 </div>
 
