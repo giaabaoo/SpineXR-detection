@@ -34,7 +34,7 @@ In this project, we employ the tasks of detecting spinal lesions by using a comb
 >
 > All the main files are under SpineXR-detection/mmdetection/spinexr_det/. Go to the path before executing all following commands.
 >
-> The weights of our classification and detection tasks can be found at this [drive]](https://drive.google.com/drive/folders/14dB6Gn3c8u7QKrgwfh71qLwaTw0kptyv?usp=sharing).
+> The weights of our classification and detection tasks can be found at this [drive](https://drive.google.com/drive/folders/14dB6Gn3c8u7QKrgwfh71qLwaTw0kptyv?usp=sharing).
 
 
 ```
