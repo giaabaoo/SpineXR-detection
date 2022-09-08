@@ -88,7 +88,7 @@ sh yolo_to_coco.sh
 To train the classification task, run the following command:
 
 ```
-python combine_cls_2_det_infer.py
+python classification/train.py
 ```
 
 ### Train detection
