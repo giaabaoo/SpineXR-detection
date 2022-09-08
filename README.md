@@ -473,3 +473,41 @@ Following COCO format:
 ```
 
 See [`public/annotation/sample.json`](public/sample.json) for am example.
+
+## Citation
+@InProceedings{nguyen2021vindr,
+    author="Nguyen, Hieu T.
+        and Pham, Hieu H.
+        and Nguyen, Nghia T.
+        and Nguyen, Ha Q.
+        and Huynh, Thang Q.
+        and Dao, Minh
+        and Vu, Van",
+    editor="de Bruijne, Marleen
+        and Cattin, Philippe C.
+        and Cotin, St{\'e}phane
+        and Padoy, Nicolas
+        and Speidel, Stefanie
+        and Zheng, Yefeng
+        and Essert, Caroline",
+    title="VinDr-SpineXR: A Deep Learning Framework for Spinal Lesions Detection and Classification from Radiographs",
+    booktitle="Medical Image Computing and Computer Assisted Intervention -- MICCAI 2021",
+    year="2021",
+    publisher="Springer International Publishing",
+    address="Cham",
+    pages="291--301",
+    isbn="978-3-030-87240-3"
+}
+
+@article{mmdetection,
+  title   = {{MMDetection}: Open MMLab Detection Toolbox and Benchmark},
+  author  = {Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and
+             Xiong, Yu and Li, Xiaoxiao and Sun, Shuyang and Feng, Wansen and
+             Liu, Ziwei and Xu, Jiarui and Zhang, Zheng and Cheng, Dazhi and
+             Zhu, Chenchen and Cheng, Tianheng and Zhao, Qijie and Li, Buyu and
+             Lu, Xin and Zhu, Rui and Wu, Yue and Dai, Jifeng and Wang, Jingdong
+             and Shi, Jianping and Ouyang, Wanli and Loy, Chen Change and Lin, Dahua},
+  journal= {arXiv preprint arXiv:1906.07155},
+  year={2019}
+}
+
