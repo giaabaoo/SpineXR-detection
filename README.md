@@ -118,6 +118,7 @@ python combine_cls_2_det_infer.py
 
 
 **Annotation**
+
 Following COCO format:
 
 ```json
