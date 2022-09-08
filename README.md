@@ -3,7 +3,7 @@
 
 # SpineXR Detection
 
-_Abnormalities classification and detection for spinal lesions in radiographs by [vindr-spinexr](https://github.com/vinbigdata-medical/vindr-spinexr)._
+_Abnormalities classification and detection for spinal lesions in radiographs collected by [vindr-spinexr](https://github.com/vinbigdata-medical/vindr-spinexr)._
 
 </div>
 
