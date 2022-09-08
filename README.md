@@ -475,6 +475,7 @@ Following COCO format:
 See [`public/annotation/sample.json`](public/sample.json) for am example.
 
 ## Citation
+```
 @InProceedings{nguyen2021vindr,
     author="Nguyen, Hieu T.
         and Pham, Hieu H.
@@ -498,7 +499,8 @@ See [`public/annotation/sample.json`](public/sample.json) for am example.
     pages="291--301",
     isbn="978-3-030-87240-3"
 }
-
+```
+```
 @article{mmdetection,
   title   = {{MMDetection}: Open MMLab Detection Toolbox and Benchmark},
   author  = {Chen, Kai and Wang, Jiaqi and Pang, Jiangmiao and Cao, Yuhang and
@@ -510,4 +512,4 @@ See [`public/annotation/sample.json`](public/sample.json) for am example.
   journal= {arXiv preprint arXiv:1906.07155},
   year={2019}
 }
-
+```
