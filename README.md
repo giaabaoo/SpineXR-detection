@@ -5,7 +5,9 @@
 
 _Abnormalities classification and detection for spinal lesions in radiographs collected by [vindr-spinexr](https://github.com/vinbigdata-medical/vindr-spinexr)._
 
+[![Star](https://img.shields.io/github/stars/giaabaoo/SpineXR-detection)](https://github.com/giaabaoo/SpineXR-detection)
 [![Star](https://img.shields.io/github/license/vinbigdata-medical/vindr-spinexr)](https://github.com/vinbigdata-medical/vindr-spinexr)
+[![Star](https://img.shields.io/github/forks/open-mmlab/mmdetection?style=for-the-badge)](https://github.com/open-mmlab/mmdetection)
 
 </div>
 
