@@ -5,6 +5,8 @@
 
 _Abnormalities classification and detection for spinal lesions in radiographs collected by [vindr-spinexr](https://github.com/vinbigdata-medical/vindr-spinexr)._
 
+[![Star](https://img.shields.io/github/license/vinbigdata-medical/vindr-spinexr)](https://github.com/vinbigdata-medical/vindr-spinexr)
+
 </div>
 
 In this project, we employ the tasks of detecting spinal lesions by using a combined classification and detection framework. Specifically, the main contributions are:
